@@ -15,10 +15,13 @@ public class Enemy : MonoBehaviour
     private GameObject Player;
     [SerializeField]
     private ConstantForce2D constantForce2D;
+    [SerializeField]
+    private Rigidbody2D rb2d;
 
     public enum Enemytype
     {
-        Jock
+        Jock,
+        Drawback
     }
 
     public Enemytype EnemyType;
@@ -52,6 +55,10 @@ public class Enemy : MonoBehaviour
                 case Enemytype.Jock:
                     constantForce2D.force = new Vector2(-5f, 0);
                     break;
+                case Enemytype.Drawback:
+                    StartCoroutine(DrawbackAI());
+                    break;
+
                 //If no AI could be found
                 default:
                     print("Sorry, something went wrong determining this beasts AI");
@@ -60,5 +67,10 @@ public class Enemy : MonoBehaviour
 
             AISwitchedOn = true;
         }
+    }
+
+    private IEnumerator DrawbackAI()
+    {
+        yield return null;
     }
 }
