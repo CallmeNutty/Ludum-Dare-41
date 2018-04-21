@@ -5,6 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public bool enemyProjectile;
+    public bool selfDestruct;
+    public int selfDestructTime;
     public int damage;
 
     private Vector3 positionToCamera;
@@ -14,7 +16,22 @@ public class Projectile : MonoBehaviour
         if (coll.gameObject.tag == "Player" && enemyProjectile == true)
         {
             PlayerStats.hearts -= damage;
+
             Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator SelfDestruct()
+    {
+        yield return new WaitForSeconds(selfDestructTime);
+        Destroy(gameObject);
+    }
+
+    void Start()
+    {
+        if(selfDestruct == true)
+        {
+            StartCoroutine(SelfDestruct());
         }
     }
 

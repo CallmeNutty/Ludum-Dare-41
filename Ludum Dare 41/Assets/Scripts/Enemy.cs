@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private Rigidbody2D rb2d;
-    [SerializeField]
     private GameObject player;
 
     //For Drawback
@@ -44,16 +43,24 @@ public class Enemy : MonoBehaviour
             PlayerStats.hearts -= damageOnHit;
             Destroy(gameObject);
         }
+    }
 
-        if(coll.gameObject.tag == "Projectile")
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Projectile")
         {
             Projectile projectile = coll.gameObject.GetComponent<Projectile>();
             hearts -= projectile.damage;
-            if(hearts <= 0)
+            if (hearts <= 0)
             {
                 Destroy(gameObject);
             }
         }
+    }
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");    
     }
 
     void Update()
@@ -78,6 +85,13 @@ public class Enemy : MonoBehaviour
             }          
             AISwitchedOn = true; //Prevent block from running again
         }
+
+        //If fallen into the abyss
+        if(transform.position.y < -100)
+        {
+            //Kill
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator DrawbackAI()
@@ -86,11 +100,11 @@ public class Enemy : MonoBehaviour
         {
             //Constantly look at the player
             firingPoint.transform.LookAt2D(player.transform.position);
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2.5f);
             firingPoint.transform.LookAt2D(player.transform.position);
 
             //Fire every - seconds
-            ExtensionMethods.Fire(2.5f, projectile, firingPoint);
+            ExtensionMethods.Fire(2.75f, projectile, firingPoint);
         }
     }
 }

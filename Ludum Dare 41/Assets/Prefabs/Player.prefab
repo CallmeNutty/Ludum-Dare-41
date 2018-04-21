@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114228571996867642}
   - component: {fileID: 114135915779971652}
   - component: {fileID: 114205990264210760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -39,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1162129369372970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.88, y: -0.22360468, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.69, y: -0.51, z: 0}
+  m_LocalScale: {x: -2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,7 +56,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.25
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f9a0d6e1b7a4a4ca89908e0052ceef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpCoolDown: 40
   rb2d: {fileID: 50642746166979006}
 --- !u!114 &114205990264210760
 MonoBehaviour:
@@ -113,6 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c39805b6e91174986c71057e22a40a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allHeartsUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  manaText: {fileID: 0}
 --- !u!114 &114228571996867642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,8 +130,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2773faea796fb35479b77a079cb17772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck: []
+  hitMaxCards: 0
+  maxCards: 5
+  Deck:
+  - {fileID: 1543782809522120, guid: 35449fff28db07642bfbdfa2531eb604, type: 2}
+  - {fileID: 1543782809522120, guid: 35449fff28db07642bfbdfa2531eb604, type: 2}
+  - {fileID: 1411674631770222, guid: 5f8c4f8d950adea4a9eb7ca1792e028b, type: 2}
+  - {fileID: 1543782809522120, guid: 35449fff28db07642bfbdfa2531eb604, type: 2}
+  - {fileID: 1411674631770222, guid: 5f8c4f8d950adea4a9eb7ca1792e028b, type: 2}
   hand: {fileID: 0}
+  cardArea: {fileID: 0}
 --- !u!212 &212424945138248046
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -157,11 +171,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -966725335
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 66bb08b0d6ddcf54e9e673d440b03acb, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1b97ab75b6cba8d4bb8437d6a23af034, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

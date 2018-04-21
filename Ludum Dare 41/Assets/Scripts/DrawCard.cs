@@ -11,6 +11,19 @@ public class DrawCard : MonoBehaviour
 
     void OnMouseUp()
     {
+        DrawNewCard();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            DrawNewCard();
+        }
+    }
+
+    void DrawNewCard()
+    {
         //If hand isn't full and can afford to draw
         if (playerHand.hitMaxCards == false && PlayerStats.mana - cost >= 0)
         {

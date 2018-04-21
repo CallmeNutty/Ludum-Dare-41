@@ -8,8 +8,20 @@ public class PlayerStats : MonoBehaviour
     public static int hearts = 3;
     public static int mana = 5;
 
-    public Image[] allHeartsUI;
+    public GameObject allHearts;
+
+    private Image[] allHeartsUI;
     public Text manaText;
+
+    void Start()
+    {
+        allHeartsUI = new Image[allHearts.transform.childCount];
+
+        for(int k = 0; k < allHeartsUI.Length; k++)
+        {
+            allHeartsUI[k] = allHearts.transform.GetChild(k).GetComponent<Image>();
+        }
+    }
 
     void Update()
     {
@@ -27,6 +39,11 @@ public class PlayerStats : MonoBehaviour
                 //Hide Heart
                 allHeartsUI[k].color = ExtensionMethods.ChangeAlpha(allHeartsUI[k].color, 0);
             }
+            else
+            {
+                //Show Heart
+                allHeartsUI[k].color = ExtensionMethods.ChangeAlpha(allHeartsUI[k].color, 255);
+            }
         }
 
         manaText.text = "Mana\n" + mana;
@@ -39,5 +56,7 @@ public class PlayerStats : MonoBehaviour
         {
             mana += 1;
         }
+
+        print(hearts);
     }
 }

@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) && timer >= jumpCoolDown && PlayerStats.mana - 1 >= 0)
         {
-            rb2d.AddForce(new Vector2(0, 1.5f), ForceMode2D.Impulse);
+            rb2d.AddForce(new Vector2(0, 3), ForceMode2D.Impulse);
             PlayerStats.mana -= 1;
 
             timer = 0;

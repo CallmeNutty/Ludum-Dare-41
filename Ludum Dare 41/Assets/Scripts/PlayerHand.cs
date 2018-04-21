@@ -28,10 +28,17 @@ public class PlayerHand : MonoBehaviour
         for (int k = 0; k < hand.transform.childCount; k++)
         {
             //Sets position
-            hand.transform.GetChild(k).transform.position = Camera.main.ViewportToWorldPoint(new Vector3(0.175f * (k + 0.5f), 0.15f));
+            hand.transform.GetChild(k).transform.position = Camera.main.ViewportToWorldPoint(new Vector3(0.175f * (k + 0.5f), 0.135f));
             //Makes visible by setting z to 0
             hand.transform.GetChild(k).transform.position = new Vector3(hand.transform.GetChild(k).transform.position.x, hand.transform.GetChild(k).transform.position.y, 0);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && cardArea.transform.childCount > 0) { cardArea.transform.GetChild(0).GetComponent<Cards>().PlayCard(); }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && cardArea.transform.childCount > 1) { cardArea.transform.GetChild(1).GetComponent<Cards>().PlayCard(); }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && cardArea.transform.childCount > 2) { cardArea.transform.GetChild(2).GetComponent<Cards>().PlayCard(); }
+        if (Input.GetKeyDown(KeyCode.Alpha4) && cardArea.transform.childCount > 3) { cardArea.transform.GetChild(3).GetComponent<Cards>().PlayCard(); }
+        if (Input.GetKeyDown(KeyCode.Alpha5) && cardArea.transform.childCount > 4) { cardArea.transform.GetChild(4).GetComponent<Cards>().PlayCard(); }
+
 
         hitMaxCards = cardArea.transform.childCount <= maxCards ? false : true;
     }

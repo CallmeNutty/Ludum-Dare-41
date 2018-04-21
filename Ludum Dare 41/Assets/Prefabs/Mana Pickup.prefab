@@ -9,49 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1411674631770222}
+  m_RootGameObject: {fileID: 1214005841624986}
   m_IsPrefabParent: 1
---- !u!1 &1411674631770222
+--- !u!1 &1214005841624986
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4306981457857112}
-  - component: {fileID: 212923131253002440}
-  - component: {fileID: 61430885395884996}
-  - component: {fileID: 114834485783913486}
-  m_Layer: 11
-  m_Name: Football Card
+  - component: {fileID: 4065073955116824}
+  - component: {fileID: 212985824795664504}
+  - component: {fileID: 61512628569766746}
+  - component: {fileID: 114488723889361218}
+  m_Layer: 0
+  m_Name: Mana Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4306981457857112
+--- !u!4 &4065073955116824
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1411674631770222}
+  m_GameObject: {fileID: 1214005841624986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.35252976, y: -5.8083777, z: 0.09662819}
-  m_LocalScale: {x: 1.8808637, y: 2.7323656, z: 1}
+  m_LocalPosition: {x: -48.221188, y: -10.362457, z: 0.375}
+  m_LocalScale: {x: 1.478438, y: 1.478438, z: 1.478438}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61430885395884996
+--- !u!61 &61512628569766746
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1411674631770222}
+  m_GameObject: {fileID: 1214005841624986}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -67,26 +67,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114834485783913486
+--- !u!114 &114488723889361218
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1411674631770222}
+  m_GameObject: {fileID: 1214005841624986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a22455b3b5e714c8068a5ee586b01f, type: 3}
+  m_Script: {fileID: 11500000, guid: f9ca1df1dae804a44a9b84bac4ff8a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardCost: 2
-  projectile: {fileID: 1531344382036950, guid: 0536cfa7d93e0c44e940d591fa17042c, type: 2}
-  CardType: 1
---- !u!212 &212923131253002440
+  amount: 4
+  PickUpType: 0
+--- !u!212 &212985824795664504
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1411674631770222}
+  m_GameObject: {fileID: 1214005841624986}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -112,10 +111,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -229227655
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 66bb08b0d6ddcf54e9e673d440b03acb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 41ee6b06962a94843be90aabc0bed795, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
