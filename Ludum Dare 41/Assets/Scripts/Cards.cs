@@ -30,7 +30,6 @@ public class Cards : MonoBehaviour
                 print("Sorry, there was a mistake with using this card");
                 break;
         }
-        print("CLICKED CARD");
     }
 
     private void FireFromSide(GameObject projectile)
@@ -39,6 +38,7 @@ public class Cards : MonoBehaviour
         GameObject spawnedObject = Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(1.05f, 0.6f)), Quaternion.identity) as GameObject;
         //Make Object Visible
         spawnedObject.transform.position = new Vector3(spawnedObject.transform.position.x, spawnedObject.transform.position.y, 0);
+        Destroy(gameObject);
     }
 
     private void FireFromTop(GameObject projectile)
@@ -47,5 +47,6 @@ public class Cards : MonoBehaviour
         GameObject spawnedObject = Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(0.7f, 1.05f)), Quaternion.identity) as GameObject;
         //Make Object Visible
         spawnedObject.transform.position = new Vector3(spawnedObject.transform.position.x, spawnedObject.transform.position.y, 0);
+        Destroy(gameObject);
     }
 }
