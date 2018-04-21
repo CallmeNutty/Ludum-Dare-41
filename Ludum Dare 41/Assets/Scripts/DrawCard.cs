@@ -11,14 +11,18 @@ public class DrawCard : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (playerHand.hitMaxCards == false)
+        //If hand isn't full and can afford to draw
+        if (playerHand.hitMaxCards == false && PlayerStats.mana - cost >= 0)
         {
-            playerHand.DrawCard(1);
-            PlayerStats.mana -= cost;
+            if (playerHand.Deck.Count > 0)
+            {
+                playerHand.DrawCard(1);
+                PlayerStats.mana -= cost;
+            }
         }
         else
         {
-            print("Sorry hand's full");
+            print("Sorry hand's full or You don't have enough mana");
         }
     }
 }
