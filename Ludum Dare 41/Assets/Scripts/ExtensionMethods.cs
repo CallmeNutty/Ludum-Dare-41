@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public static class ExtensionMethods
 {
@@ -15,6 +13,7 @@ public static class ExtensionMethods
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    //Method which shuffles a list
     public static void Shuffle<T>(this IList<T> list)
     {
         System.Random rng = new System.Random();
@@ -32,5 +31,17 @@ public static class ExtensionMethods
     public static Color ChangeAlpha(this Color color, float alpha)
     {
         return new Color(color.r, color.g, color.b, alpha);
+    }
+
+    //Method responsible for spawning bullets and managing them
+    public static void Fire(float bulletSpeed, GameObject bullet, GameObject firingPoint)
+    {
+        //Variable which holds the instantiated bullet
+        GameObject spawnedBullet;
+
+        //Instantiate bullet and assign it to spawned bullet as a GameObject
+        spawnedBullet = MonoBehaviour.Instantiate(bullet, firingPoint.transform.position, firingPoint.transform.rotation) as GameObject;
+
+        spawnedBullet.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0, bulletSpeed), ForceMode2D.Impulse); //Add a relative force to the bullet
     }
 }

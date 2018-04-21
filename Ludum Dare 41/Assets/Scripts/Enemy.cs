@@ -6,17 +6,28 @@ public class Enemy : MonoBehaviour
 {
     private bool AISwitchedOn;
 
-    //How close the Player has to be for the AI to activate
+    [Tooltip("How close the Player has to be for the AI to activate")]
     public int activateDistance; 
     public int hearts;
     public int damageOnHit;
 
     [SerializeField]
-    private GameObject Player;
+    private Rigidbody2D rb2d;
+    [SerializeField]
+    private GameObject player;
+
+    //For Drawback
+    [Tooltip("Not Necessery for every enemy")]
+    [SerializeField]
+    private GameObject firingPoint;
+    [Tooltip("Not Necessery for every enemy")]
+    [SerializeField]
+    private GameObject projectile;
+
+    //For Jock
+    [Tooltip("Not Necessery for every enemy")]
     [SerializeField]
     private ConstantForce2D constantForce2D;
-    [SerializeField]
-    private Rigidbody2D rb2d;
 
     public enum Enemytype
     {
@@ -47,7 +58,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.transform.position.x - Player.transform.position.x <= activateDistance && AISwitchedOn == false)
+        //If inside aggro range and AI Type has not yet been selected
+        if (gameObject.transform.position.x - player.transform.position.x <= activateDistance && AISwitchedOn == false)
         {
             //Find appropriate AI
             switch (EnemyType)
@@ -63,14 +75,22 @@ public class Enemy : MonoBehaviour
                 default:
                     print("Sorry, something went wrong determining this beasts AI");
                     break;
-            }
-
-            AISwitchedOn = true;
+            }          
+            AISwitchedOn = true; //Prevent block from running again
         }
     }
 
     private IEnumerator DrawbackAI()
     {
-        yield return null;
+        while (true)
+        {
+            //Constantly look at the player
+            firingPoint.transform.LookAt2D(player.transform.position);
+            yield return new WaitForSeconds(3f);
+            firingPoint.transform.LookAt2D(player.transform.position);
+
+            //Fire every - seconds
+            ExtensionMethods.Fire(2.5f, projectile, firingPoint);
+        }
     }
 }

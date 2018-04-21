@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
     public static int hearts = 3;
-    public static int mana = 1;
+    public static int mana = 5;
 
     public Image[] allHeartsUI;
     public Text manaText;

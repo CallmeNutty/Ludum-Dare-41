@@ -6,6 +6,9 @@ using UnityEngine.Serialization;
 public class Cards : MonoBehaviour
 {
     [SerializeField]
+    public int cardCost;
+
+    [SerializeField]
     private GameObject projectile;
 
     public enum Cardtype
@@ -18,18 +21,27 @@ public class Cards : MonoBehaviour
 
     void OnMouseUp()
     {
-        //Set spell
-        switch (CardType)
+        if (PlayerStats.mana - cardCost >= 0)
         {
-            case Cardtype.FireProjectileFromSide:
-                FireFromSide(projectile, 1);
-                break;
-            case Cardtype.FireProjectileFromTop:
-                FireFromTop(projectile, 1);
-                break;
-            default:
-                print("Sorry, there was a mistake with using this card");
-                break;
+            PlayerStats.mana -= cardCost;
+
+            //Set spell
+            switch (CardType)
+            {
+                case Cardtype.FireProjectileFromSide:
+                    FireFromSide(projectile, 1);
+                    break;
+                case Cardtype.FireProjectileFromTop:
+                    FireFromTop(projectile, 1);
+                    break;
+                default:
+                    print("Sorry, there was a mistake with using this card");
+                    break;
+            }
+        }
+        else
+        {
+            print("Sorry, not enough cash");
         }
     }
 
