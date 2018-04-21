@@ -8,16 +8,43 @@ public class Cards : MonoBehaviour
     [SerializeField]
     private GameObject projectile;
 
+    public enum Cardtype
+    {
+        FireProjectileFromSide,
+        FireProjectileFromTop
+    }
+
+    public Cardtype CardType;
+
     void OnMouseUp()
     {
-        ThrowBall(projectile);
+        switch (CardType)
+        {
+            case Cardtype.FireProjectileFromSide:
+                FireFromSide(projectile);
+                break;
+            case Cardtype.FireProjectileFromTop:
+                FireFromTop(projectile);
+                break;
+            default:
+                print("Sorry, there was a mistake with using this card");
+                break;
+        }
         print("CLICKED CARD");
     }
 
-    private void ThrowBall(GameObject projectile)
+    private void FireFromSide(GameObject projectile)
     {
         //Spawn projectile to the right side of the camera
-        GameObject spawnedObject = Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(1.1f, 0.6f)), Quaternion.identity) as GameObject;
+        GameObject spawnedObject = Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(1.05f, 0.6f)), Quaternion.identity) as GameObject;
+        //Make Object Visible
+        spawnedObject.transform.position = new Vector3(spawnedObject.transform.position.x, spawnedObject.transform.position.y, 0);
+    }
+
+    private void FireFromTop(GameObject projectile)
+    {
+        //Spawn projectile to the right side of the camera
+        GameObject spawnedObject = Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(0.7f, 1.05f)), Quaternion.identity) as GameObject;
         //Make Object Visible
         spawnedObject.transform.position = new Vector3(spawnedObject.transform.position.x, spawnedObject.transform.position.y, 0);
     }
