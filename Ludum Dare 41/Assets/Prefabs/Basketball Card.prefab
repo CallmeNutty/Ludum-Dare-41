@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212872662543796046}
   - component: {fileID: 61356149054792096}
   - component: {fileID: 114709299894358764}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Basketball Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1543782809522120}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.1910605, y: -3.500264, z: 0}
+  m_LocalPosition: {x: -7.26, y: -3.500264, z: 0}
   m_LocalScale: {x: 1.8808637, y: 2.7323656, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -115,7 +115,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 66bb08b0d6ddcf54e9e673d440b03acb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5586207, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

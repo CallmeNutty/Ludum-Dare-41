@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212923131253002440}
   - component: {fileID: 61430885395884996}
   - component: {fileID: 114834485783913486}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Football Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -18,13 +18,14 @@ public class Cards : MonoBehaviour
 
     void OnMouseUp()
     {
+        //Set spell
         switch (CardType)
         {
             case Cardtype.FireProjectileFromSide:
-                FireFromSide(projectile);
+                FireFromSide(projectile, 1);
                 break;
             case Cardtype.FireProjectileFromTop:
-                FireFromTop(projectile);
+                FireFromTop(projectile, 1);
                 break;
             default:
                 print("Sorry, there was a mistake with using this card");
@@ -32,21 +33,25 @@ public class Cards : MonoBehaviour
         }
     }
 
-    private void FireFromSide(GameObject projectile)
+    private void FireFromSide(GameObject projectile, int damage)
     {
         //Spawn projectile to the right side of the camera
-        GameObject spawnedObject = Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(1.05f, 0.6f)), Quaternion.identity) as GameObject;
+        GameObject spawnedObject = Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(1.05f, 0.4f)), Quaternion.identity) as GameObject;
         //Make Object Visible
         spawnedObject.transform.position = new Vector3(spawnedObject.transform.position.x, spawnedObject.transform.position.y, 0);
+        spawnedObject.GetComponent<Projectile>().damage = damage;
+
         Destroy(gameObject);
     }
 
-    private void FireFromTop(GameObject projectile)
+    private void FireFromTop(GameObject projectile, int damage)
     {
         //Spawn projectile to the right side of the camera
         GameObject spawnedObject = Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(0.7f, 1.05f)), Quaternion.identity) as GameObject;
         //Make Object Visible
         spawnedObject.transform.position = new Vector3(spawnedObject.transform.position.x, spawnedObject.transform.position.y, 0);
+        spawnedObject.GetComponent<Projectile>().damage = damage;
+
         Destroy(gameObject);
     }
 }
