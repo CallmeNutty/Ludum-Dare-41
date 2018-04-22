@@ -5,11 +5,22 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private bool AISwitchedOn;
+    private JuiceLibrary juiceLibrary;
 
-    [Tooltip("How close the Player has to be for the AI to activate")]
+    [Header("Necessery for every enemy")]
     public int activateDistance; 
-    public int hearts;
+    public float health;
     public int damageOnHit;
+    public AudioClip enemyHit;
+    public AudioClip hit;
+    public Enemytype EnemyType;
+
+    [Header("Dependant on Type")]
+    [Tooltip("The amount of Constant Force to be applied to the Jock")]
+    public int constantForceToApply;
+    public float rateOfFire;
+    public float projectileSpeed;
+    public bool upsideDown;
 
     [SerializeField]
     private Rigidbody2D rb2d;
@@ -31,16 +42,19 @@ public class Enemy : MonoBehaviour
     public enum Enemytype
     {
         Jock,
-        Drawback
+        Drawback,
+        Jabelin
     }
-
-    public Enemytype EnemyType;
 
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Player")
         {
             PlayerStats.hearts -= damageOnHit;
+
+            juiceLibrary.PlaySound(hit);
+            StartCoroutine(juiceLibrary.BlinkRed(player));
+
             Destroy(gameObject);
         }
     }
@@ -49,9 +63,12 @@ public class Enemy : MonoBehaviour
     {
         if (coll.gameObject.tag == "Projectile")
         {
+            //Find the projectile and lose hearts by it's damage amount
             Projectile projectile = coll.gameObject.GetComponent<Projectile>();
-            hearts -= projectile.damage;
-            if (hearts <= 0)
+            health -= projectile.damage;
+            juiceLibrary.PlaySound(enemyHit);
+            //Life check
+            if (health <= 0)
             {
                 Destroy(gameObject);
             }
@@ -60,7 +77,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");    
+        player = GameObject.FindGameObjectWithTag("Player");
+        juiceLibrary = GameObject.FindGameObjectWithTag("GameController").GetComponent<JuiceLibrary>();
     }
 
     void Update()
@@ -72,10 +90,13 @@ public class Enemy : MonoBehaviour
             switch (EnemyType)
             {
                 case Enemytype.Jock:
-                    constantForce2D.force = new Vector2(-5f, 0);
+                    constantForce2D.force = new Vector2(constantForceToApply, 0);
                     break;
                 case Enemytype.Drawback:
                     StartCoroutine(DrawbackAI());
+                    break;
+                case Enemytype.Jabelin:
+                    if (upsideDown) { rb2d.AddForce(new Vector2(0, -30)); } else { rb2d.AddForce(new Vector2(0, 30)); };
                     break;
 
                 //If no AI could be found
@@ -87,7 +108,7 @@ public class Enemy : MonoBehaviour
         }
 
         //If fallen into the abyss
-        if(transform.position.y < -100)
+        if(transform.position.y < -100 || transform.position.y > 100)
         {
             //Kill
             Destroy(gameObject);
@@ -100,11 +121,11 @@ public class Enemy : MonoBehaviour
         {
             //Constantly look at the player
             firingPoint.transform.LookAt2D(player.transform.position);
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(rateOfFire);
             firingPoint.transform.LookAt2D(player.transform.position);
 
             //Fire every - seconds
-            ExtensionMethods.Fire(2.75f, projectile, firingPoint);
+            ExtensionMethods.Fire(projectileSpeed, projectile, firingPoint);
         }
     }
 }

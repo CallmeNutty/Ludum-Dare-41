@@ -6,6 +6,10 @@ public class PickUp : MonoBehaviour
 {
     public int amount;
 
+    private JuiceLibrary juiceLibrary;
+    public AudioClip pickUpMana;
+    public AudioClip pickUpHeart;
+
     public enum Pickup
     {
         mana,
@@ -21,10 +25,14 @@ public class PickUp : MonoBehaviour
             {
                 case Pickup.mana:
                     PlayerStats.mana += amount;
+                    juiceLibrary.PlaySound(pickUpMana);
+
                     Destroy(gameObject);
                     break;
                 case Pickup.health:
                     PlayerStats.hearts ++;
+                    juiceLibrary.PlaySound(pickUpHeart);
+
                     Destroy(gameObject);
                     break;
                 default:
@@ -32,5 +40,10 @@ public class PickUp : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void Start()
+    {
+        juiceLibrary = GameObject.FindGameObjectWithTag("GameController").GetComponent<JuiceLibrary>();
     }
 }

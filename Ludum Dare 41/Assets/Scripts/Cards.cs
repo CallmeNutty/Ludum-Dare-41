@@ -6,8 +6,9 @@ public class Cards : MonoBehaviour
 {
     [SerializeField]
     public int cardCost;
-    public int damage;
-    public int amountToHail;
+    public float damage;
+    public int amountToFire;
+    public int projectileSpeed;
 
     [SerializeField]
     private GameObject projectile;
@@ -19,7 +20,8 @@ public class Cards : MonoBehaviour
     {
         FireProjectileFromSide,
         FireProjectileFromTop,
-        Hail
+        Hail,
+        ConstantFire
     }
     
     public Cardtype CardType;
@@ -52,8 +54,6 @@ public class Cards : MonoBehaviour
 
     public void PlayCard()
     {
-        print("Mouse Down");
-
         if (PlayerStats.mana - cardCost >= 0)
         {
             PlayerStats.mana -= cardCost;
@@ -68,7 +68,10 @@ public class Cards : MonoBehaviour
                     FireFromTop(projectile, damage);
                     break;
                 case Cardtype.Hail:
-                    Hail(projectile, amountToHail, damage);
+                    Hail(projectile, amountToFire, damage);
+                    break;
+                case Cardtype.ConstantFire:
+                    ConstantFire(projectile, amountToFire, projectileSpeed);
                     break;
                 default:
                     print("Sorry, there was a mistake with using this card");
@@ -82,7 +85,7 @@ public class Cards : MonoBehaviour
     }
 
 
-    private void FireFromSide(GameObject projectile, int damage)
+    private void FireFromSide(GameObject projectile, float damage)
     {
         //Spawn projectile to the right side of the camera
         GameObject spawnedObject = Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(1.05f, 0, 0)), Quaternion.identity) as GameObject;
@@ -93,7 +96,7 @@ public class Cards : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void FireFromTop(GameObject projectile, int damage)
+    private void FireFromTop(GameObject projectile, float damage)
     {
         //Spawn projectile to the right side of the camera
         GameObject spawnedObject = Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(0.7f, 1.05f)), Quaternion.identity) as GameObject;
@@ -104,7 +107,7 @@ public class Cards : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Hail(GameObject projectile, int amount, int damage)
+    private void Hail(GameObject projectile, int amount, float damage)
     {
         for(int k = 0; k < amount; k++)
         {
@@ -113,6 +116,23 @@ public class Cards : MonoBehaviour
             //Make Object Visible
             spawnedObject.transform.position = new Vector3(spawnedObject.transform.position.x, spawnedObject.transform.position.y, 0);
             spawnedObject.GetComponent<Projectile>().damage = damage;
+        }
+
+        Destroy(gameObject);
+    }
+
+    private void ConstantFire(GameObject projectile, int amount, int projectileSpeed)
+    {
+        for (int k = 0; k < amount; k++)
+        {
+            //Variable which holds the instantiated bullet
+            GameObject spawnedBullet;
+
+            //Instantiate bullet and assign it to spawned bullet as a GameObject
+            spawnedBullet = MonoBehaviour.Instantiate(projectile, Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(-1, -0.1f), Random.Range(0.5f, 0.9f))), Quaternion.identity) as GameObject;
+            spawnedBullet.transform.position = new Vector3(spawnedBullet.transform.position.x, spawnedBullet.transform.position.y, 0);
+
+            spawnedBullet.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(projectileSpeed, 0), ForceMode2D.Impulse); //Add a relative force to the bullet
         }
 
         Destroy(gameObject);

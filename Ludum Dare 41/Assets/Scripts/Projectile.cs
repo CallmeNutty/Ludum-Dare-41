@@ -7,16 +7,18 @@ public class Projectile : MonoBehaviour
     public bool enemyProjectile;
     public bool selfDestruct;
     public int selfDestructTime;
-    public int damage;
+    public float damage;
 
     private Vector3 positionToCamera;
+    public AudioClip hit;
+    private JuiceLibrary juiceLibrary;
 
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Player" && enemyProjectile == true)
         {
-            PlayerStats.hearts -= damage;
-
+            PlayerStats.hearts -= (int)damage;
+            juiceLibrary.PlaySound(hit);
             Destroy(gameObject);
         }
     }
@@ -33,6 +35,8 @@ public class Projectile : MonoBehaviour
         {
             StartCoroutine(SelfDestruct());
         }
+
+        juiceLibrary = GameObject.FindGameObjectWithTag("GameController").GetComponent<JuiceLibrary>();
     }
 
     // Update is called once per frame

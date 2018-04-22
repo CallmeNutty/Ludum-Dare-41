@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardCost: 5
   damage: 1
-  amountToHail: 50
+  amountToFire: 50
   projectile: {fileID: 1320838221800006, guid: 7c7702c2cefd75d44bf4760aa5175288, type: 2}
   baseScale: {x: 0.75, y: 0.75, z: 0.75}
   CardType: 2

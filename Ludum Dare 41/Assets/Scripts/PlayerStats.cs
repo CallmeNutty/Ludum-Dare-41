@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
     public static int hearts = 3;
-    public static int mana = 5;
+    public static int mana = 8;
+    public static int keys;
 
     public GameObject allHearts;
 
@@ -25,9 +27,12 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        if(hearts <= 0)
+        if (hearts <= 0 || Input.GetKeyDown(KeyCode.R))
         {
-            print("ded");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+            hearts = 3;
+            mana = 5;
+            keys = 0;
         }
         
         //Iterate through all heart images
@@ -47,16 +52,5 @@ public class PlayerStats : MonoBehaviour
         }
 
         manaText.text = "Mana\n" + mana;
-
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.H))
-        {
-            hearts += 1;
-        }
-        else if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.M))
-        {
-            mana += 1;
-        }
-
-        print(hearts);
     }
 }

@@ -91,8 +91,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectile: 1
   selfDestruct: 1
-  selfDestructTime: 5
+  selfDestructTime: 3
   damage: 1
+  hit: {fileID: 8300000, guid: 1516c61dcaa2cde4382ebeab84ba06dc, type: 3}
 --- !u!212 &212033678343484198
 SpriteRenderer:
   m_ObjectHideFlags: 1

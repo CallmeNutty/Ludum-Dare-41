@@ -187,8 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardCost: 1
-  damage: 2
-  amountToHail: 0
+  damage: 3
+  amountToFire: 0
+  projectileSpeed: 0
   projectile: {fileID: 1459793317304686, guid: 00e7c46b43ea45a4ea73ea8f1daab0a2, type: 2}
   baseScale: {x: 0.75, y: 0.75, z: 0.75}
   CardType: 0

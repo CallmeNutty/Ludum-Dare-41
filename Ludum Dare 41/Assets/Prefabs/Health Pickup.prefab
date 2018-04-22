@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1965098640478884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -67.83344, y: -10.212458, z: 0.375}
+  m_LocalPosition: {x: -32.40444, y: -6.5675435, z: 0.38935313}
   m_LocalScale: {x: 1.478438, y: 1.478438, z: 1.478438}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 1
+  soundManager: {fileID: 0}
+  pickUpMana: {fileID: 0}
+  pickUpHeart: {fileID: 8300000, guid: 5ef07fcb3dc7fe24ea5d5aa2c894cf0f, type: 3}
   PickUpType: 1
 --- !u!212 &212262399356599758
 SpriteRenderer:

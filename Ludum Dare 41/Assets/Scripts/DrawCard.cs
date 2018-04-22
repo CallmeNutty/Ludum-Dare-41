@@ -16,7 +16,7 @@ public class DrawCard : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && PlayerStats.mana - 1 >= 0)
         {
             DrawNewCard();
         }
