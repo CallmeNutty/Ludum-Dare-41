@@ -27,15 +27,8 @@ public class DrawCard : MonoBehaviour
         //If hand isn't full and can afford to draw
         if (playerHand.hitMaxCards == false && PlayerStats.mana - cost >= 0)
         {
-            if (playerHand.Deck.Count > 0)
-            {
-                playerHand.DrawCard(1);
-                PlayerStats.mana -= cost;
-            }
-        }
-        else
-        {
-            print("Sorry hand's full or You don't have enough mana");
+            playerHand.DrawCard(1);
+            PlayerStats.mana -= cost;
         }
     }
 }

@@ -196,10 +196,13 @@ MonoBehaviour:
   activateDistance: 15
   health: 6
   damageOnHit: 1
+  enemyHit: {fileID: 8300000, guid: 37b2480fa64664a4c8113ce40b5a08b6, type: 3}
+  hit: {fileID: 8300000, guid: 1516c61dcaa2cde4382ebeab84ba06dc, type: 3}
   EnemyType: 1
   constantForceToApply: 0
   rateOfFire: 1.5
   projectileSpeed: 3.25
+  upsideDown: 0
   rb2d: {fileID: 50115049523750050}
   firingPoint: {fileID: 1719929986185582}
   projectile: {fileID: 1723141527871240, guid: 68e14150141bd1741823c2ec345851d2, type: 2}

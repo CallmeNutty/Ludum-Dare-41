@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321889190109804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.723568, y: 1.9812913, z: 0}
+  m_LocalPosition: {x: 1.5602548, y: 2.9291868, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 224157895175745514}
@@ -130,9 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a22455b3b5e714c8068a5ee586b01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardCost: 5
+  cardCost: 6
   damage: 1
-  amountToFire: 50
+  amountToFire: 40
+  projectileSpeed: 0
   projectile: {fileID: 1320838221800006, guid: 7c7702c2cefd75d44bf4760aa5175288, type: 2}
   baseScale: {x: 0.75, y: 0.75, z: 0.75}
   CardType: 2
@@ -189,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '5
+  m_Text: '6
 
 '
 --- !u!212 &212484629803207928

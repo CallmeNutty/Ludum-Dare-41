@@ -33,14 +33,15 @@ public class PlayerHand : MonoBehaviour
             hand.transform.GetChild(k).transform.position = new Vector3(hand.transform.GetChild(k).transform.position.x, hand.transform.GetChild(k).transform.position.y, 0);
         }
 
+        //Hotkeys
         if (Input.GetKeyDown(KeyCode.Alpha1) && cardArea.transform.childCount > 0) { cardArea.transform.GetChild(0).GetComponent<Cards>().PlayCard(); }
         if (Input.GetKeyDown(KeyCode.Alpha2) && cardArea.transform.childCount > 1) { cardArea.transform.GetChild(1).GetComponent<Cards>().PlayCard(); }
         if (Input.GetKeyDown(KeyCode.Alpha3) && cardArea.transform.childCount > 2) { cardArea.transform.GetChild(2).GetComponent<Cards>().PlayCard(); }
         if (Input.GetKeyDown(KeyCode.Alpha4) && cardArea.transform.childCount > 3) { cardArea.transform.GetChild(3).GetComponent<Cards>().PlayCard(); }
         if (Input.GetKeyDown(KeyCode.Alpha5) && cardArea.transform.childCount > 4) { cardArea.transform.GetChild(4).GetComponent<Cards>().PlayCard(); }
 
-
-        hitMaxCards = cardArea.transform.childCount <= maxCards ? false : true;
+        //Checks if player has hit the maximum amount of cards on their hand
+        hitMaxCards = cardArea.transform.childCount == maxCards ? true : false;
     }
 
     //Method which draws cards specified by amount
@@ -48,16 +49,18 @@ public class PlayerHand : MonoBehaviour
     {
         for (int k = 0; k < amount; k++)
         {
+            //If out of cards in the deck
             if (Deck.Count <= 0)
             {
-                print("Sorry, no cards left");
                 break;
             }
 
+            //If space on the hand
             if (cardArea.transform.childCount < maxCards)
             {
+                //Pick a random card
                 GameObject card = Deck[Random.Range(0, Deck.Count)];
-                Instantiate(card, cardArea.transform);
+                Instantiate(card, cardArea.transform); //Add to game
 
                 Deck.Remove(Deck.Find(x => x == card)); //Remove from deck
             }

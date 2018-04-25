@@ -38,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1751934688860284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.543, y: 0.7716, z: 0.140625}
-  m_LocalScale: {x: 1.542826, y: 0.715647, z: 1.9488745}
+  m_LocalPosition: {x: 58.709312, y: 6.101, z: 0.140625}
+  m_LocalScale: {x: 1.542826, y: 1.6702088, z: 1.9488745}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -90,9 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519c47aaf2d722c48bce734aabc4fee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activateDistance: 15
+  activateDistance: 16
   health: 4
-  damageOnHit: 1
+  damageOnHit: 2
+  enemyHit: {fileID: 0}
   hit: {fileID: 8300000, guid: 1516c61dcaa2cde4382ebeab84ba06dc, type: 3}
   EnemyType: 0
   constantForceToApply: -6
